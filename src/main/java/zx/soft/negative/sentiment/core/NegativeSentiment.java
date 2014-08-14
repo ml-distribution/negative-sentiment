@@ -134,19 +134,19 @@ public class NegativeSentiment {
 		int wordIndex = 0;
 		int sentimentWordsIndex = 0;
 		for (String word : words) {
-			System.out.println(word);
+			//			System.out.println(word);
 			if (emotionDictionary.getNegwords().contains(word)) {
-				System.out.println("negword: " + word);
+				//				System.out.println("negword: " + word);
 				baseScore = 1;
 				for (int i = sentimentWordsIndex; i <= wordIndex; i++) {
 					baseScore *= sentimentLevel(words.get(i));
 				}
-				if (baseScore > 0.0f) {
+				if (Float.compare(baseScore, 0.0f) == 1) {
 					negScore += baseScore;
 				}
 				sentimentWordsIndex = wordIndex + 1;
 			} else if ((word.equals("!") || word.equals("！"))) {
-				if (negScore > 0.0f) {
+				if (Float.compare(negScore, 0.0f) == 1) {
 					negScore += 2;
 				}
 			}
