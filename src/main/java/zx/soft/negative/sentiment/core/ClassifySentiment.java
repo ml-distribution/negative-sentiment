@@ -3,33 +3,32 @@ package zx.soft.negative.sentiment.core;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import zx.soft.negative.sentiment.analyzer.AnalyzerTool;
 import zx.soft.negative.sentiment.domain.EmotionDictionary;
 import zx.soft.negative.sentiment.utils.ReadFileUtils;
 
-public class NegativeSentiment {
+/**
+ * 與请分类抽象类
+ * 
+ * @author wanggang
+ *
+ */
+public abstract class ClassifySentiment {
 
-	private static Logger logger = LoggerFactory.getLogger(NegativeSentiment.class);
+	protected final EmotionDictionary emotionDictionary;
 
-	private final EmotionDictionary emotionDictionary;
-
-	private static final String BASE_DIR = "emotion_dict/";
+	protected static final String BASE_DIR = "emotion_dict/";
 
 	private static final String PUNCTUALS = ",.!?;…~……，。！？；...～...... ";
 	private static final String PUNCTUALS_UNUSED = "[,.?;…~……，。？；...～...... ]";
 
 	// 注意：分词器要使用完整的分词器，不要去除停用词。
-	private final AnalyzerTool analyzerTool;
+	protected final AnalyzerTool analyzerTool;
 
-	public NegativeSentiment() {
-		logger.info("Initing dicts Starting ...");
+	public ClassifySentiment() {
 		analyzerTool = new AnalyzerTool();
 		emotionDictionary = new EmotionDictionary();
 		init();
-		logger.info("Initing dicts Finishing ...");
 	}
 
 	/**
@@ -46,8 +45,6 @@ public class NegativeSentiment {
 		emotionDictionary.setMore(ReadFileUtils.getFileToList(BASE_DIR + "more"));
 		// most
 		emotionDictionary.setMost(ReadFileUtils.getFileToList(BASE_DIR + "most"));
-		// negwords
-		emotionDictionary.setNegwords(ReadFileUtils.getFileToList(BASE_DIR + "negwords"));
 		// over
 		emotionDictionary.setOver(ReadFileUtils.getFileToList(BASE_DIR + "over"));
 		// very
@@ -102,55 +99,12 @@ public class NegativeSentiment {
 	/**
 	 * 计算每句话的得分
 	 */
-	public float getSentenceScore(String sentence) {
-		List<String> words = analyzerTool.analyzerTextToList(sentence);
-		float negScore = 0.0f;
-		float baseScore = 0.0f;
-		int wordIndex = 0;
-		int sentimentWordsIndex = 0;
-		for (String word : words) {
-			//			System.out.println(word);
-			if (emotionDictionary.getNegwords().contains(word)) {
-				//				System.out.println("negword: " + word);
-				baseScore = 1;
-				for (int i = sentimentWordsIndex; i <= wordIndex; i++) {
-					baseScore *= sentimentLevel(words.get(i));
-				}
-				if (Float.compare(baseScore, 0.0f) == 1) {
-					negScore += baseScore;
-				}
-				sentimentWordsIndex = wordIndex + 1;
-			} else if ((word.equals("!") || word.equals("！"))) {
-				if (Float.compare(negScore, 0.0f) == 1) {
-					negScore += 2;
-				}
-			}
-			wordIndex++;
-		}
-
-		return negScore;
-	}
+	public abstract float getSentenceScore(String sentence);
 
 	/**
 	 * 计算程度副词权值
 	 */
-	public float sentimentLevel(String degreeWord) {
-		if (emotionDictionary.getMost().contains(degreeWord)) {
-			return 2.0f;
-		} else if (emotionDictionary.getVery().contains(degreeWord)) {
-			return 1.5f;
-		} else if (emotionDictionary.getMore().contains(degreeWord)) {
-			return 1.25f;
-		} else if (emotionDictionary.getIsh().contains(degreeWord)) {
-			return 0.5f;
-		} else if (emotionDictionary.getInsufficiently().contains(degreeWord)) {
-			return 0.25f;
-		} else if (emotionDictionary.getInverse().contains(degreeWord)) {
-			return -1f;
-		} else {
-			return 1f;
-		}
-	}
+	public abstract float sentimentLevel(String degreeWord);
 
 	public void cleanup() {
 		analyzerTool.close();

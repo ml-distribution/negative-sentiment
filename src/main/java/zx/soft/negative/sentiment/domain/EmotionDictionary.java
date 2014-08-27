@@ -12,14 +12,14 @@ public class EmotionDictionary {
 	private List<String> over;
 	private List<String> very;
 	// 负性词表
-	private List<String> negwords;
+	private List<String> catewords;
 	// 否定副词
 	private List<String> inverse;
 
 	@Override
 	public String toString() {
 		return "EmotionDictionary:[insufficiently=" + insufficiently + ",ish=" + ish + ",more=" + more + ",most="
-				+ most + ",over=" + over + ",very=" + very + ",inverse=" + inverse + ",negwords=" + negwords + "]";
+				+ most + ",over=" + over + ",very=" + very + ",inverse=" + inverse + ",negwords=" + catewords + "]";
 	}
 
 	public List<String> getInsufficiently() {
@@ -70,12 +70,12 @@ public class EmotionDictionary {
 		this.very = very;
 	}
 
-	public List<String> getNegwords() {
-		return negwords;
+	public List<String> getCatewords() {
+		return catewords;
 	}
 
-	public void setNegwords(List<String> negwords) {
-		this.negwords = negwords;
+	public void setCatewords(List<String> catewords) {
+		this.catewords = catewords;
 	}
 
 	public List<String> getInverse() {

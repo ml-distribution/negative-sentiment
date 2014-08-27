@@ -35,4 +35,14 @@ public class ReadFileUtils {
 		}
 	}
 
+	public static String getFileNameByPrefix(String dir, String prefix) {
+		String result = null;
+		File[] files = new File(dir).listFiles();
+		for (File file : files) {
+			if (file.getName().contains(prefix))
+				result = file.getName();
+		}
+		return result;
+	}
+
 }

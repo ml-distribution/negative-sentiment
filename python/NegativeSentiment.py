@@ -11,7 +11,7 @@ import jieba.posseg
 import logging
 
 #Load user dictionary to increse segmentation accuracy
-jieba.load_userdict('/usr/local/lib/python2.7/dist-packages/jieba/dict.txt')
+jieba.load_userdict('jieba/dict.txt')
 logging.basicConfig(level=logging.INFO)
 
 def getTextData(filePath):

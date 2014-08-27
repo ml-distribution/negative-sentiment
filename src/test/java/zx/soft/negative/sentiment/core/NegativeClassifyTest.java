@@ -8,24 +8,24 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class NegativeSentimentTest {
+public class NegativeClassifyTest {
 
-	private static NegativeSentiment negativeSentiment;
+	private static NegativeClassify negativeClassify;
 
 	@BeforeClass
 	public static void prepare() {
-		negativeSentiment = new NegativeSentiment();
+		negativeClassify = new NegativeClassify();
 	}
 
 	@AfterClass
 	public static void cleanup() {
-		negativeSentiment.cleanup();
+		negativeClassify.cleanup();
 	}
 
 	@Test
 	public void testGetSentences() {
 		String text = "事实胜于雄辩。美方站不住脚的“搭便车论”实在荒唐...无异于，放大自己制造战乱却不思悔过的不义。。。。如果对别人的，，义举不服气，那就不要挑起战乱给别人“制造方便”嘛！";
-		List<String> sentences = negativeSentiment.getSentences(text);
+		List<String> sentences = negativeClassify.getSentences(text);
 		assertEquals("事实胜于雄辩", sentences.get(0));
 		assertEquals("美方站不住脚的“搭便车论”实在荒唐", sentences.get(1));
 		assertEquals("无异于", sentences.get(2));
@@ -52,7 +52,7 @@ public class NegativeSentimentTest {
 				+ "主审法官介绍，该案的5名被告文化程度都不高，均是小学文化，从小未受到良好的教育，加之好逸恶劳，梦想不劳而获，几个同龄"
 				+ "人一拍即合，才会犯下这样的罪行。不仅给受害人身心造成了严重伤害，也让自己的家人伤心、失望，庭审中，5名当事人都表示追"
 				+ "悔莫及。奉劝那些期望通过“特殊途径”致富的人及时悬崖勒马，勤劳致富方能长久。";
-		assertEquals(81.0f, negativeSentiment.getTextScore(text), 0.0f);
+		assertEquals(82.75f, negativeClassify.getTextScore(text), 0.0f);
 	}
 
 }

@@ -1,10 +1,12 @@
-package zx.soft.negative.sentiment.core;
+package zx.soft.negative.sentiment.demo;
 
-public class NegativeSentimentDemo {
+import zx.soft.negative.sentiment.core.NegativeClassify;
+
+public class NegativeClassifyDemo {
 
 	public static void main(String[] args) {
 
-		NegativeSentiment negativeSentiment = new NegativeSentiment();
+		NegativeClassify negativeClassify = new NegativeClassify();
 		String text = "综合消息,近日,湖南湘潭县妇幼保健院一产妇死亡,经媒体报道引发关注。据“央视新闻”消息,湘潭县卫生局称,胎儿出生后产妇出现呕吐呛咳,"
 				+ "院方立即抢救,但产妇因羊水栓塞引发多器官功能衰竭,抢救无效死亡。目前湘潭县卫生局、司法局已介入调查。据此前媒体报道,10日上午11点,医生"
 				+ "给张女士做了产前检查,胎位正常,由于胎儿较重,医生建议家属做剖腹产。随后,张女士被推进五楼的手术室。12点05分,手术室护士告诉家属,产妇顺"
@@ -15,8 +17,8 @@ public class NegativeSentimentDemo {
 				+ "。可进去之后,刘先生看到的了让他难以置信的一幕:妻子赤身裸体躺在手术台上,满口鲜血,眼睛里还含着泪水,可却再也没有了呼吸。而本应该在抢救"
 				+ "的医生和护士,却全体失踪了,房间里只有一些不明身份的男子在吃着槟榔,抽着烟。针对此事,湘潭县卫生局称,8月10日12点05分胎儿出生后,产妇出现"
 				+ "呕吐呛咳,院方立即抢救,但产妇因羊水栓塞引发多器官功能衰竭,抢救无效于21点30分死亡。目前湘潭县卫生局、司法局已介入调查。";
-		System.out.println(negativeSentiment.getTextScore(text));
-		negativeSentiment.cleanup();
+		System.out.println(negativeClassify.getTextScore(text));
+		negativeClassify.cleanup();
 	}
 
 }
