@@ -16,7 +16,7 @@ public class AdvertisementClassify extends ClassifySentiment {
 		logger.info("Initing negative-words Starting ...");
 		// advertisement
 		emotionDictionary.setCatewords(ReadFileUtils.getFileToListFromResources(BASE_DIR
-				+ ReadFileUtils.getFileNameByPrefix("src/main/resources/" + BASE_DIR, "advertisement-words")));
+				+ "advertisement-words-20140827"));
 		logger.info("Initing negative-words Finishing ...");
 	}
 
