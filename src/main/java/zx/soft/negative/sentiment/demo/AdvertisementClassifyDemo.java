@@ -12,7 +12,6 @@ public class AdvertisementClassifyDemo {
 				+ "天涯。 |雪花勇闯天涯挑战未登峰邀您共赴征程！";
 		System.out.println(advClassify.getTextScore(text));
 		advClassify.cleanup();
-
 	}
 
 }

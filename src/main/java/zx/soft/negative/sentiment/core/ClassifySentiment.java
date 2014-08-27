@@ -36,19 +36,19 @@ public abstract class ClassifySentiment {
 	 */
 	private void init() {
 		// insufficiently
-		emotionDictionary.setInsufficiently(ReadFileUtils.getFileToList(BASE_DIR + "insufficiently"));
+		emotionDictionary.setInsufficiently(ReadFileUtils.getFileToListFromResources(BASE_DIR + "insufficiently"));
 		// inverse
-		emotionDictionary.setInverse(ReadFileUtils.getFileToList(BASE_DIR + "inverse"));
+		emotionDictionary.setInverse(ReadFileUtils.getFileToListFromResources(BASE_DIR + "inverse"));
 		// ish
-		emotionDictionary.setIsh(ReadFileUtils.getFileToList(BASE_DIR + "ish"));
+		emotionDictionary.setIsh(ReadFileUtils.getFileToListFromResources(BASE_DIR + "ish"));
 		// more
-		emotionDictionary.setMore(ReadFileUtils.getFileToList(BASE_DIR + "more"));
+		emotionDictionary.setMore(ReadFileUtils.getFileToListFromResources(BASE_DIR + "more"));
 		// most
-		emotionDictionary.setMost(ReadFileUtils.getFileToList(BASE_DIR + "most"));
+		emotionDictionary.setMost(ReadFileUtils.getFileToListFromResources(BASE_DIR + "most"));
 		// over
-		emotionDictionary.setOver(ReadFileUtils.getFileToList(BASE_DIR + "over"));
+		emotionDictionary.setOver(ReadFileUtils.getFileToListFromResources(BASE_DIR + "over"));
 		// very
-		emotionDictionary.setVery(ReadFileUtils.getFileToList(BASE_DIR + "very"));
+		emotionDictionary.setVery(ReadFileUtils.getFileToListFromResources(BASE_DIR + "very"));
 	}
 
 	/**

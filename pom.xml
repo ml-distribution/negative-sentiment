@@ -4,12 +4,13 @@
 
 	<groupId>zx.soft</groupId>
 	<artifactId>negative-sentiment</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>Negative Sentiment</name>
 	<description>Analyzing the Negative Public Opinion.</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.outputEncoding>UTF-8</project.build.outputEncoding>
 		<slf4j.version>1.7.5</slf4j.version>
 		<restlet.version>2.2.0</restlet.version>
 	</properties>
@@ -224,13 +225,33 @@
 
 	</build>
 
+	<!-- 依赖包仓库 -->
 	<repositories>
-		<!-- Restlet 仓库 -->
+		<!-- 中新仓库 -->
+		<repository>
+			<id>zxsoft-public</id>
+			<name>Nexus Release Repository</name>
+			<url>http://192.168.3.23:18081/nexus/content/groups/public/</url>
+		</repository>
+		<!-- Restlet仓库 -->
 		<repository>
 			<id>maven-restlet</id>
 			<name>Public online Restlet repository</name>
 			<url>http://maven.restlet.org</url>
 		</repository>
 	</repositories>
+
+	<!-- 部署仓库 -->
+	<distributionManagement>
+		<snapshotRepository>
+			<id>zxsoft-snapshots</id>
+			<name>Nexus Snapshot Repository</name>
+			<url>http://192.168.3.23:18081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>sentiment</id>
+			<url>http://192.168.3.23:18081/nexus/content/repositories/sentiment</url>
+		</repository>
+	</distributionManagement>
 
 </project>

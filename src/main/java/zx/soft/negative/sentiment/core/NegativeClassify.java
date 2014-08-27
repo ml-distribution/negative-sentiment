@@ -21,8 +21,8 @@ public class NegativeClassify extends ClassifySentiment {
 		super();
 		logger.info("Initing negative-words Starting ...");
 		// negwords
-		emotionDictionary.setCatewords(ReadFileUtils.getFileToList(BASE_DIR
-				+ ReadFileUtils.getFileNameByPrefix(BASE_DIR, "negative-words")));
+		emotionDictionary.setCatewords(ReadFileUtils.getFileToListFromResources(BASE_DIR
+				+ ReadFileUtils.getFileNameByPrefix("src/main/resources/" + BASE_DIR, "negative-words")));
 		logger.info("Initing negative-words Finishing ...");
 	}
 

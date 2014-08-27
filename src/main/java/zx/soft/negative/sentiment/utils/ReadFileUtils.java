@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,27 @@ public class ReadFileUtils {
 	public static List<String> getFileToList(String file) {
 		List<String> result = new ArrayList<>();
 		try (BufferedReader br = new BufferedReader(new FileReader(new File(file)));) {
+			String str = null;
+			while ((str = br.readLine()) != null) {
+				str = str.trim();
+				if (str.length() > 0) {
+					result.add(str);
+				}
+			}
+			return result;
+		} catch (FileNotFoundException e) {
+			logger.error("FileNotFoundException: " + e);
+			throw new RuntimeException(e);
+		} catch (IOException e) {
+			logger.error("IOException: " + e);
+			throw new RuntimeException(e);
+		}
+	}
+
+	public static List<String> getFileToListFromResources(String file) {
+		List<String> result = new ArrayList<>();
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(ReadFileUtils.class.getClassLoader()
+				.getResourceAsStream(file)));) {
 			String str = null;
 			while ((str = br.readLine()) != null) {
 				str = str.trim();
