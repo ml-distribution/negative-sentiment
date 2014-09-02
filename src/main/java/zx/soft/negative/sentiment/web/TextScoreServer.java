@@ -9,8 +9,10 @@ import zx.soft.negative.sentiment.jackson.ReplaceConvert;
 import zx.soft.negative.sentiment.utils.ConfigUtil;
 
 /**
+ * 與请数据评分服务：包括广告信息评分、负面信息评分
  * 
- * http://localhost:XXXX/sentiment/score/{type}/{text}
+ * POST: http://localhost:XXXX/sentiment/score
+ *        传入参数：TextScorePost对象，包含type和text两个参数。
  * 
  * @author wanggang
  *

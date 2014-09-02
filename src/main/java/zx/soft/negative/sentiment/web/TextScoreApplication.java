@@ -26,7 +26,7 @@ public class TextScoreApplication extends Application {
 	@Override
 	public Restlet createInboundRoot() {
 		Router router = new Router(getContext());
-		router.attach("/score/{type}/{text}", TextScoreResource.class);
+		router.attach("/score", TextScoreResource.class);
 		return router;
 	}
 
@@ -37,6 +37,9 @@ public class TextScoreApplication extends Application {
 	 * @return
 	 */
 	public float getTextScore(String text, String type) {
+		if (text == null || text.length() == 0 || type == null || type.length() == 0) {
+			return 0.0f;
+		}
 		if ("adv".equalsIgnoreCase(type)) {
 			return advClassify.getTextScore(text);
 		} else if ("neg".equalsIgnoreCase(type)) {
