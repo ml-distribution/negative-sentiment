@@ -193,17 +193,22 @@
 				<version>2.16</version>
 			</plugin>
 			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
 				<version>2.4</version>
 				<configuration>
-					<archive>
-						<manifest>
-							<mainClass>zx.soft.negative.sentiment.NSDriver</mainClass>
-						</manifest>
-					</archive>
-					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
+					<excludes>
+						<exclude>log4j.properties</exclude>
+						<exclude>web-server.properties</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptors>
+						<descriptor>src/main/assembly/distribution.xml</descriptor>
+					</descriptors>
 				</configuration>
 				<executions>
 					<execution>
