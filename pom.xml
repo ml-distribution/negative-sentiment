@@ -8,7 +8,7 @@
 		<version>1.0.0</version>
 	</parent>
 
-	<artifactId>negative-sentiment1</artifactId>
+	<artifactId>negative-sentiment</artifactId>
 	<version>2.0.0</version>
 	<name>Negative Sentiment</name>
 	<description>Analyzing the Negative Public Opinion.</description>
