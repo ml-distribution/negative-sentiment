@@ -77,7 +77,7 @@ public class AnalyzerTool {
 			}
 			tokenStream.end();
 		} catch (IOException e) {
-			logger.error("IOException in AnalyzerTool: " + e);
+			logger.error("IOException:{}, StackTrace:{}", e.getMessage(), e.getStackTrace());
 			throw new RuntimeException(e);
 		}
 		return result;

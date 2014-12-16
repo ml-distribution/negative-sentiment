@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import zx.soft.negative.sentiment.domain.TextScorePost;
-import zx.soft.negative.sentiment.utils.URLCodecUtils;
+import zx.soft.utils.codec.URLCodecUtils;
 
 /**
  * 情感分类资源类
@@ -23,11 +23,11 @@ public class TextScoreResource extends ServerResource {
 	@Override
 	public void doInit() {
 		application = (TextScoreApplication) getApplication();
+		logger.info("Request Url: " + URLCodecUtils.decoder(getReference().toString(), "utf-8") + ".");
 	}
 
 	@Post("json")
 	public Object returnTextScore(TextScorePost textScorePost) {
-		logger.info("Request Url: " + URLCodecUtils.decoder(getReference().toString(), "utf-8") + ".");
 		return application.getTextScore(textScorePost.getText(), textScorePost.getType()) + "";
 	}
 

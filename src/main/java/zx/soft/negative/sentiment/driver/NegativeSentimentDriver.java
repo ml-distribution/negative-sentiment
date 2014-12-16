@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import zx.soft.negative.sentiment.web.TextScoreServer;
+import zx.soft.utils.driver.ProgramDriver;
 
 /**
  * 驱动类
@@ -24,18 +25,19 @@ public class NegativeSentimentDriver {
 			System.err.println("Usage: Driver <class-name>");
 			System.exit(-1);
 		}
-		String[] leftArgs = new String[args.length - 1];
-		System.arraycopy(args, 1, leftArgs, 0, leftArgs.length);
 
-		switch (args[0]) {
-		case "textScoreServer":
-			logger.info("與请信息评分接口接口： ");
-			TextScoreServer.main(leftArgs);
-			break;
-		default:
-			return;
+		int exitCode = -1;
+		ProgramDriver pgd = new ProgramDriver();
+		try {
+			pgd.addClass("textScoreServer", TextScoreServer.class, "與请信息评分接口");
+			pgd.driver(args);
+			// Success
+			exitCode = 0;
+		} catch (Throwable e) {
+			logger.error("Exception:{}, StackTrace:{}", e.getMessage(), e.getStackTrace());
+			throw new RuntimeException(e);
 		}
-
+		System.exit(exitCode);
 	}
 
 }

@@ -5,7 +5,7 @@ import java.util.List;
 
 import zx.soft.negative.sentiment.analyzer.AnalyzerTool;
 import zx.soft.negative.sentiment.domain.EmotionDictionary;
-import zx.soft.negative.sentiment.utils.ReadFileUtils;
+import zx.soft.utils.file.ReadFileUtils;
 
 /**
  * 與请分类抽象类

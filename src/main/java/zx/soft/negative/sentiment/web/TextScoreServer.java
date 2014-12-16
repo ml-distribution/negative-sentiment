@@ -5,8 +5,8 @@ import java.util.Properties;
 import org.restlet.Component;
 import org.restlet.data.Protocol;
 
-import zx.soft.negative.sentiment.jackson.ReplaceConvert;
-import zx.soft.negative.sentiment.utils.ConfigUtil;
+import zx.soft.utils.config.ConfigUtil;
+import zx.soft.utils.jackson.ReplaceConvert;
 
 /**
  * 與请数据评分服务：包括广告信息评分、负面信息评分

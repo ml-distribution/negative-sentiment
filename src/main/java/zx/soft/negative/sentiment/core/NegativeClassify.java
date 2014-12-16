@@ -5,7 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import zx.soft.negative.sentiment.utils.ReadFileUtils;
+import zx.soft.utils.file.ReadFileUtils;
 
 /**
  * 负面信息分类
